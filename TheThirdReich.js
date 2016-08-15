@@ -21,11 +21,11 @@ var GUI;
 var menu;
 var exitUI;
 
-var VERSION = "3.1.2";
+var VERSION = "3.1.5";
 var NAME = "TheThirdReich";
 var DEVELOPERS = "SSFuhrer";
 
-var MARK = "©";
+var MARK = "";
 var split = " ";
 
 var defaultDestroyTime = [
@@ -263,7 +263,7 @@ function mainMenu(){
 			}
 			
 			godmode = new CheckBox(ctx);
-			godmode.setText("God Mode");
+			godmode.setText("Insta Health");
 			godmode.setTextColor(Color.RED);
 			godmode.setChecked(godmodech);
 			godmode.setOnClickListener(new View.OnClickListener({
@@ -817,7 +817,7 @@ function mainMenu(){
 			}
 			
 			jesus = new CheckBox(ctx);
-			jesus.setText("Jesus / Water Walk");
+			jesus.setText("Jesus");
 			jesus.setTextColor(Color.RED);
 			jesus.setChecked(jesusch);
 			jesus.setOnClickListener(new View.OnClickListener({
@@ -841,7 +841,7 @@ function mainMenu(){
 			}
 			
 			nowall = new CheckBox(ctx);
-			nowall.setText("No Walls");
+			nowall.setText("Ghost");
 			nowall.setTextColor(Color.RED);
 			nowall.setChecked(nowallch);
 			nowall.setOnClickListener(new View.OnClickListener({
@@ -923,6 +923,19 @@ function mainMenu(){
 				}
 			}));
 			menuLayout.addView(source);
+			
+						var youtube = new Button(ctx);
+			youtube.setText("Youtube");
+			youtube.setTextColor(Color.BLUE);
+			youtube.setOnClickListener(new View.OnClickListener({
+				onClick: function(viewarg){
+					var intentURL = new Intent(ctx);
+					intentURL.setAction(Intent.ACTION_VIEW);
+					intentURL.setData(Uri.parse("https://www.youtube.com/channel/UC6vLyO_hm7K9wUg_Hwb8kYA"));
+					ctx.startActivity(intentURL);
+				}
+			}));
+			menuLayout.addView(youtube);
 			
 			var maker = new TextView(ctx);
 			maker.setTextSize(17);
@@ -1157,9 +1170,9 @@ function attackHook(attacker, victim) {
 
 function useItem(x, y, z, itemId, blockId, side) {
 	if(spammer) {
-		clientMessage("SPAM!! SPAM!! SPAM!! SPAM!! SPAM!! SPAM!! SPAM!! SPAM!!");
+		clientMessage("JEW!! JEW!! JEW!! SPAM!! SPAM!! SPAM!! SPAM!! SPAM!!");
 		if(Server.getAddress() != null && Server.getPort() != null) {
-			Server.sendChat("SPAM!! SPAM!! SPAM!! SPAM!! SPAM!! SPAM!! SPAM!! SPAM!!");
+			Server.sendChat("JEW!! JEW!! JEW!! SPAM!! SPAM!! SPAM!! SPAM!! SPAM!!");
 		}
 	}
 	if(nukers) {
