@@ -143,6 +143,10 @@ var derpch = false;
 var derp;
 var derps = false;
 
+var freezech = false;
+var freeze;
+var freezeaura = false;
+
 var killch = false;
 var kill;
 var killaura = false;
@@ -745,6 +749,30 @@ function mainMenu(){
 				derp.setTextColor(Color.GREEN);
 			}
 			
+			freeze = new CheckBox(ctx);
+			freeze.setText("Freeze Aura");
+			freeze.setTextColor(Color.RED);
+			freeze.setChecked(freezech);
+			freeze.setOnClickListener(new View.OnClickListener({
+				onClick: function(viewarg){
+					if(!freezech){
+						freezech = true;
+						freeze.setTextColor(Color.GREEN);
+						freezeaura = true;
+					}else{
+						freezech = false;
+						freeze.setTextColor(Color.RED);
+						freezeaura = false;
+					}
+					freeze.setChecked(freezech);
+				}
+			}));
+			menuLayout.addView(freeze);
+			
+			if(freezech) {
+				freeze.setTextColor(Color.GREEN);
+			}
+			
 			kill = new CheckBox(ctx);
 			kill.setText("Kill Aura");
 			kill.setTextColor(Color.RED);
@@ -1084,6 +1112,20 @@ function modTick() {
 		var y = Math.floor(Entity.getYaw(player));
 		var p = Math.floor(Entity.getPitch(player));
 		Entity.setRot(player, y+3, p);
+	}
+	if(freezeaura) {
+		var mobs = Entity.getAll();
+		for(var i = 0; i < mobs.length; i++) {
+			var x = Entity.getX(mobs[i]) - getPlayerX();
+			var y = Entity.getY(mobs[i]) - getPlayerY();
+			var z = Entity.getZ(mobs[i]) - getPlayerZ();
+			if(x*x+y*y+z*z<=4*4 && mobs[i] != getPlayerEnt() && Entity.getEntityTypeId(mobs[i]) != EntityType.ARROW && Entity.getEntityTypeId(mobs[i]) != EntityType.BOAT && Entity.getEntityTypeId(mobs[i]) != EntityType.EGG && Entity.getEntityTypeId(mobs[i]) != EntityType.EXPERIENCE_ORB && Entity.getEntityTypeId(mobs[i]) != EntityType.EXPERIENCE_POTION && Entity.getEntityTypeId(mobs[i]) != EntityType.FALLING_BLOCK && Entity.getEntityTypeId(mobs[i]) != EntityType.FIREBALL && Entity.getEntityTypeId(mobs[i]) != EntityType.FISHING_HOOK && Entity.getEntityTypeId(mobs[i]) != EntityType.ITEM && Entity.getEntityTypeId(mobs[i]) != EntityType.LIGHTNING_BOLT && Entity.getEntityTypeId(mobs[i]) != EntityType.MINECART && Entity.getEntityTypeId(mobs[i]) != EntityType.PAINTING && Entity.getEntityTypeId(mobs[i]) != EntityType.PRIMED_TNT && Entity.getEntityTypeId(mobs[i]) != EntityType.SMALL_FIREBALL && Entity.getEntityTypeId(mobs[i]) != EntityType.SNOWBALL && Entity.getEntityTypeId(mobs[i]) != EntityType.THROWN_POTION) {
+				//setRot(getPlayerEnt(), (Math.atan2(z, x) - 90) * Math.pi / 180, getPitch());
+				/*if(Entity.loadExtraData(mobs[i], "frozen") 
+				Entity.saveExtraData(mobs[i], "");*/
+				Entity.setImmobile(mobs[i], true);
+			}
+		}
 	}
 	if(killaura) {
 		var mobs = Entity.getAll();
