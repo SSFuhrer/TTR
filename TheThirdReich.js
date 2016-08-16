@@ -746,7 +746,7 @@ function mainMenu(){
 			}
 			
 			kill = new CheckBox(ctx);
-			kill.setText("Kill Aura (Temporaly does not work)");
+			kill.setText("Kill Aura");
 			kill.setTextColor(Color.RED);
 			kill.setChecked(killch);
 			kill.setOnClickListener(new View.OnClickListener({
@@ -1092,8 +1092,10 @@ function modTick() {
 			var x = Entity.getX(mobs[i])-getPlayerX();
 			var y = Entity.getY(mobs[i])-getPlayerY();
 			var z = Entity.getZ(mobs[i])-getPlayerZ();
-			if(x*x+y*y+z*z<=4*4 && mobs[i]!==getPlayerEnt()) {
-				Entity.setHealth(mobs[i], 0);
+			if(x*x+y*y+z*z<=4*4 && mobs[i] != getPlayerEnt() && Entity.getEntityTypeId(mobs[i]) != EntityType.ARROW && Entity.getEntityTypeId(mobs[i]) != EntityType.BOAT && Entity.getEntityTypeId(mobs[i]) != EntityType.EGG && Entity.getEntityTypeId(mobs[i]) != EntityType.EXPERIENCE_ORB && Entity.getEntityTypeId(mobs[i]) != EntityType.EXPERIENCE_POTION && Entity.getEntityTypeId(mobs[i]) != EntityType.FALLING_BLOCK && Entity.getEntityTypeId(mobs[i]) != EntityType.FIREBALL && Entity.getEntityTypeId(mobs[i]) != EntityType.FISHING_HOOK && Entity.getEntityTypeId(mobs[i]) != EntityType.ITEM && Entity.getEntityTypeId(mobs[i]) != EntityType.LIGHTNING_BOLT && Entity.getEntityTypeId(mobs[i]) != EntityType.MINECART && Entity.getEntityTypeId(mobs[i]) != EntityType.PAINTING && Entity.getEntityTypeId(mobs[i]) != EntityType.PRIMED_TNT && Entity.getEntityTypeId(mobs[i]) != EntityType.SMALL_FIREBALL && Entity.getEntityTypeId(mobs[i]) != EntityType.SNOWBALL && Entity.getEntityTypeId(mobs[i]) != EntityType.THROWN_POTION && Entity.getHealth(mobs[i]) != 0) {
+			//setRot(getPlayerEnt(), (Math.atan2(z, x) - 90) * Math.pi / 180, getPitch());
+			Entity.setHealth(mobs[i], 0);
+			break;
 			}
 		}
 	}
