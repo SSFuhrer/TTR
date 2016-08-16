@@ -72,6 +72,7 @@ var speedmine;
 
 var godmodech = false;
 var godmode;
+var supergodgen = false;
 
 var fovch = false;
 var fov;
@@ -263,7 +264,7 @@ function mainMenu(){
 			}
 			
 			godmode = new CheckBox(ctx);
-			godmode.setText("Insta Health");
+			godmode.setText("Godmode");
 			godmode.setTextColor(Color.RED);
 			godmode.setChecked(godmodech);
 			godmode.setOnClickListener(new View.OnClickListener({
@@ -271,11 +272,11 @@ function mainMenu(){
 					if(!godmodech){
 						godmodech = true;
 						godmode.setTextColor(Color.GREEN);
-						Player.setHealth(30000);
+						supergodgen = true;
 					}else{
 						godmodech = false;
 						godmode.setTextColor(Color.RED);
-						Player.setHealth(20);
+						supergodgen = false;
 					}
 					godmode.setChecked(godmodech);
 				}
@@ -769,7 +770,7 @@ function mainMenu(){
 			}
 			
 			gmspeed = new CheckBox(ctx);
-			gmspeed.setText("Game Speed x3");
+			gmspeed.setText("Timer");
 			gmspeed.setTextColor(Color.RED);
 			gmspeed.setChecked(gmspeedch);
 			gmspeed.setOnClickListener(new View.OnClickListener({
@@ -777,7 +778,7 @@ function mainMenu(){
 					if(!gmspeedch){
 						gmspeedch = true;
 						gmspeed.setTextColor(Color.GREEN);
-						ModPE.setGameSpeed(60);
+						ModPE.setGameSpeed(75);
 					}else{
 						gmspeedch = false;
 						gmspeed.setTextColor(Color.RED);
@@ -924,7 +925,7 @@ function mainMenu(){
 			}));
 			menuLayout.addView(source);
 			
-						var youtube = new Button(ctx);
+			var youtube = new Button(ctx);
 			youtube.setText("Youtube");
 			youtube.setTextColor(Color.BLUE);
 			youtube.setOnClickListener(new View.OnClickListener({
@@ -996,6 +997,9 @@ function modTick() {
 	if(superregen) {
 		Player.setHealth(20);
 	}
+	if(supergodgen) {
+		Player.setHealth(3000)
+	}		
 	if(jetpacked) {
 		toDirectionalVector(playerDir, (getYaw() + 90) * DEG_TO_RAD, getPitch() * DEG_TO_RAD * -1);
 		var player = getPlayerEnt();
