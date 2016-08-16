@@ -21,7 +21,7 @@ var GUI;
 var menu;
 var exitUI;
 
-var VERSION = "3.1.5";
+var VERSION = "3.2";
 var NAME = "TheThirdReich";
 var DEVELOPERS = "SSFuhrer";
 
