@@ -968,6 +968,13 @@ function mainMenu(){
 			
 			var maker = new TextView(ctx);
 			maker.setTextSize(17);
+			maker.setText("Contact Email: Jtorbusg@gmail.com");
+			maker.setTextColor(Color.RED);
+			maker.setGravity(Gravity.CENTER);
+			menuLayout.addView(maker);
+			
+			var maker = new TextView(ctx);
+			maker.setTextSize(17);
 			maker.setText("Made by" + split + DEVELOPERS);
 			maker.setTextColor(Color.RED);
 			maker.setGravity(Gravity.CENTER);
@@ -1048,7 +1055,7 @@ function modTick() {
 		if(falling==1 && getTile(px, py-3, pz)!=0 && cd==0) {
 			saver = Level.spawnMob(px, py-1, pz, 10);
 			vel = Entity.getVelY(getPlayerEnt());
-			Entity.setRenderType(saver,1);
+			Entity.setType(saver,1);
 			rideAnimal(getPlayerEnt(), saver);
 			setVelY(saver,vel);
 			ModPE.showTipMessage("");
