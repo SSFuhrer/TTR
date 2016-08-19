@@ -1055,7 +1055,7 @@ function modTick() {
 		if(falling==1 && getTile(px, py-3, pz)!=0 && cd==0) {
 			saver = Level.spawnMob(px, py-1, pz, 10);
 			vel = Entity.getVelY(getPlayerEnt());
-			Entity.setType(saver,1);
+			Entity.setRenderType(saver,1);
 			rideAnimal(getPlayerEnt(), saver);
 			setVelY(saver,vel);
 			ModPE.showTipMessage("");
