@@ -21,7 +21,7 @@ var GUI;
 var menu;
 var exitUI;
 
-var VERSION = "3.2";
+var VERSION = "X";
 var NAME = "TheThirdReich";
 var DEVELOPERS = "SSFuhrer";
 
@@ -66,6 +66,9 @@ var HP;
 var gravity = -0.07840000092983246;
 var Entities = [];
 var counter = 0;
+
+var panicch = false
+var panic;
 
 var speedminech = false;
 var speedmine;
@@ -242,6 +245,137 @@ function mainMenu(){
 				}
 			}));
 			menuLayout.addView(survival);
+			
+			var panic = new CheckBox(ctx);
+			panic.setText("Panic");
+			panic.setTextColor(Color.RED);
+			panic.setOnClickListener(new View.OnClickListener({
+				onClick: function(viewarg){
+					if(!panicch){
+						panicch = true;
+						panic.setTextColor(Color.GREEN);
+						speedminech = false
+						speedmine.setTextColor(Color.RED)
+						defaultDestroy();
+						speedmine.setChecked(speedminech);
+						godmodech = false;
+						godmode.setTextColor(Color.RED);
+						supergodgen = false;
+						godmode.setChecked(godmodech);
+						fovch = false;
+						fov.setTextColor(Color.RED);
+						ModPE.resetFov();
+						fov.setChecked(fovch);
+						flightch = false;
+						flight.setTextColor(Color.RED);
+						Player.setCanFly(false);
+						flight.setChecked(flightch);
+						onlydaych = false;
+						onlyday.setTextColor(Color.RED);
+						thisday = false;
+						onlyday.setChecked(onlydaych);
+						fastregench = false;
+						fastregen.setTextColor(Color.RED);
+						superregen = false;
+						fastregen.setChecked(fastregench);
+						instakillch = false;
+						instakill.setTextColor(Color.RED);
+						instakilled = false;
+						instakill.setChecked(instakillch);
+						saddleupch = false;
+						saddleup.setTextColor(Color.RED);
+						saddle = false;
+						saddleup.setChecked(saddleupch);
+						knockbackch = false;
+						knockback.setTextColor(Color.GREEN);
+						knockbacks = false;
+						knockback.setChecked(knockbackch);
+						tapspamch = false;
+						tapspam.setTextColor(Color.RED);
+						spammer = false;
+						tapspam.setChecked(tapspamch);
+						jetpackch = false;
+						jetpack.setTextColor(Color.RED);
+						jetpacked = false;
+						jetpack.setChecked(jetpackch);
+						nofallch = false;
+						nofall.setTextColor(Color.RED);
+						nofalls = false;
+						nofall.setChecked(nofallch);
+						nukerch = false;
+						nuker.setTextColor(Color.RED);
+						nukers = false;
+						nuker.setChecked(nukerch);
+						cbuildch = false;
+						cbuild.setTextColor(Color.RED);
+						cbuilder = false;
+						cbuild.setChecked(cbuildch);
+						speedch = false;
+						speed.setTextColor(Color.RED);
+						speeded = false;
+						s = 0;
+						speed.setChecked(speedch);
+						stackdrch = false;
+						stackdr.setTextColor(Color.RED);
+						stacked = false;
+						stackdr.setChecked(stackdrch);
+						invscrch = false;
+						invscr.setTextColor(Color.RED);
+						ModPE.resetFov();
+						invscr.setChecked(invscrch);
+						highjumpch = false;
+						highjump.setTextColor(Color.RED);
+						highjumps = false;
+						highjump.setChecked(highjumpch);
+						brightch = false;
+						bright.setTextColor(Color.RED);
+						Block.setLightLevel(0, 0);
+						bright.setChecked(brightch);
+						coordch = false;
+						coord.setTextColor(Color.RED);
+						coords = false;
+						coord.setChecked(coordch);
+						derpch = false;
+						derp.setTextColor(Color.RED);
+						derps = false;
+						derp.setChecked(derpch);
+						freezech = false;
+						freeze.setTextColor(Color.RED);
+						freezeaura = false;
+						freeze.setChecked(freezech);
+						killch = false;
+						kill.setTextColor(Color.RED);
+						killaura = false;
+						kill.setChecked(killch);
+						gmspeedch = false;
+						gmspeed.setTextColor(Color.RED);
+						ModPE.setGameSpeed(20);
+						gmspeed.setChecked(gmspeedch);
+						invplacech = false;
+						invplace.setTextColor(Color.RED);
+						invplace.setChecked(invplacech);
+						jesusch = false;
+						jesus.setTextColor(Color.RED);
+						waterwalk = false;
+						jesus.setChecked(jesusch);
+						nowallch = false;
+						nowall.setTextColor(Color.RED);
+						nowalls = false;
+						Entity.setCollisionSize(getPlayerEnt(), 1, 2);
+						nowall.setChecked(nowallch);
+						effectch = false;
+						effect.setTextColor(Color.RED);
+						effects = false;
+						Entity.removeAllEffects(getPlayerEnt());
+						effect.setChecked(effectch);
+					}else{
+						panicch = false;
+						panic.setTextColor(Color.RED);
+					}
+               		panic.setChecked(panicch);			
+				} 
+			}));
+			menuLayout.addView(panic);
 			
 			speedmine = new CheckBox(ctx);
 			speedmine.setText("Speed Mine");
