@@ -67,7 +67,7 @@ var gravity = -0.07840000092983246;
 var Entities = [];
 var counter = 0;
 
-var panicch = false
+var panicch = false;
 var panic;
 
 var speedminech = false;
